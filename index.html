@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Fire</title>
+    <title>Reyn Dev Premium Arayüzü</title>
     <style>
         * {
             margin: 0;
@@ -12,180 +12,304 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #1d1f2f;
-            color: white;
-            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #FF6347, #FFD700); /* Yumuşak renk geçişi */
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            overflow: hidden;
             flex-direction: column;
             text-align: center;
-            overflow: hidden;
+            animation: backgroundAnimation 8s infinite alternate;
         }
 
-        /* Hareketli Parallax Arka Plan Efekti */
-        .parallax {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://source.unsplash.com/1600x900/?night,city') no-repeat center center fixed;
-            background-size: cover;
-            transform: scale(1.2);
-            z-index: -1;
-            animation: parallax 18s infinite linear;
-        }
-
-        @keyframes parallax {
-            0% { transform: translateY(0) scale(1.2); }
-            50% { transform: translateY(10px) scale(1.2); }
-            100% { transform: translateY(0) scale(1.2); }
-        }
-
-        /* Ana İçerik Alanı */
-        .content {
-            z-index: 1;
-            padding: 60px 40px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 25px;
-            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.5);
-            width: 80%;
-            max-width: 1000px;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(45deg, #FF6347, #FFD700); /* Turuncu ve sarı */
+            }
+            50% {
+                background: linear-gradient(45deg, #1E90FF, #32CD32); /* Mavi ve yeşil */
+            }
+            100% {
+                background: linear-gradient(45deg, #8A2BE2, #FF4500); /* Mor ve kırmızı */
+            }
         }
 
         h1 {
-            font-size: 70px;
-            color: #ff3366;
+            font-size: 60px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 5px;
-            text-shadow: 0 10px 30px rgba(255, 0, 150, 0.4);
-            animation: slideIn 2s ease-out;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: textPop 1s ease-out forwards, textGlow 2s infinite alternate;
         }
 
-        @keyframes slideIn {
-            0% { opacity: 0; transform: translateX(-30px); }
-            100% { opacity: 1; transform: translateX(0); }
+        @keyframes textPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
-        p {
-            font-size: 22px;
-            color: #eee;
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.6);
+            }
+            100% {
+                text-shadow: 0 0 60px rgba(255, 215, 0, 0.9), 0 0 80px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        .start-btn {
+            padding: 20px 60px;
+            font-size: 24px;
+            background: #FF4500;
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            display: inline-block;
             margin-top: 30px;
-            line-height: 1.8;
-            opacity: 0;
-            animation: fadeInText 2s ease-in-out forwards;
+            animation: btnPop 1s ease-out forwards;
         }
 
-        @keyframes fadeInText {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes btnPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
-        /* Karizmatik Butonlar */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+            background: #FF6347;
+        }
+
+        .buttons-container {
+            display: none;
             margin-top: 50px;
         }
 
-        .button {
-            padding: 20px 60px;
-            background: linear-gradient(45deg, #ff3366, #8e44ad);
+        .dynamic-btn {
+            background: transparent;
+            border: 2px solid #FFD700;
+            padding: 18px 40px;
+            font-size: 22px;
+            color: #FFD700;
+            border-radius: 50px;
+            margin: 15px;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dynamic-btn:hover {
+            background: #FFD700;
+            color: #000;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .dynamic-btn:nth-child(1) {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .dynamic-btn:nth-child(2) {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        .dynamic-btn:nth-child(3) {
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-container {
+            display: none;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.6s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-text {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .slide-btn {
+            padding: 15px 35px;
+            font-size: 18px;
+            background: #FF6347;
+            color: #fff;
             border: none;
             border-radius: 50px;
-            font-size: 22px;
-            color: white;
-            text-transform: uppercase;
             cursor: pointer;
-            outline: none;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            transition: transform 0.5s ease-in-out;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s, height 0.4s;
+        .slide-btn:hover {
+            transform: translateY(-4px);
+            background: #FF4500;
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
         }
 
-        .button:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .button:hover::before {
-            width: 0;
-            height: 0;
-        }
-
-        .button:active {
-            transform: translateY(2px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Mobil Uyumluluk */
-        @media screen and (max-width: 768px) {
+        /* Responsive Design */
+        @media (max-width: 768px) {
             h1 {
-                font-size: 50px;
+                font-size: 48px;
+                margin-bottom: 30px;
             }
 
-            p {
+            .start-btn {
+                padding: 15px 40px;
+                font-size: 18px;
+            }
+
+            .dynamic-btn {
+                padding: 14px 30px;
                 font-size: 20px;
             }
 
-            .button-container {
-                flex-direction: column;
-                gap: 25px;
+            .slide-container {
+                margin-top: 20px;
+                padding: 30px;
             }
 
-            .button {
-                width: 80%;
-                padding: 15px;
+            .slide-text {
+                font-size: 18px;
+            }
+
+            .slide-btn {
+                padding: 12px 28px;
+                font-size: 16px;
             }
         }
 
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .start-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .dynamic-btn {
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+
+            .slide-container {
+                margin-top: 15px;
+                padding: 25px;
+            }
+
+            .slide-text {
+                font-size: 16px;
+            }
+
+            .slide-btn {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>REYN DEV</h1>
+        <button class="start-btn" id="startBtn">Başla</button>
 
-    <div class="parallax"></div>
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="dynamic-btn" id="btn1">Çekilişten Yararlan</button>
+            <button class="dynamic-btn" id="btn2">Huge Satın al</button>
+            <button class="dynamic-btn" id="btn3">Pet sat</button>
+        </div>
 
-    <div class="content">
-        <h1>Game Fire</h1>
-        <p>Poppy playtime apk indirin alttaki seçenekler(bizi tercih ettiğiniz için teşekkürler)</p>
-        
-        <div class="button-container">
-            <a href="https://poppy-playtime-game.softonic.com.tr/android">    <button class="button">Poppy playtime APK chapter 1</button><a href=""></a>
-            <a href="https://poppy-playtime-chapter-2.en.softonic.com/">   <button class="button">Poppy playtime APK chapter 2</button></a>
-            <a href="https://poppy-playtime-chapter-3.en.softonic.com/"> <button class="button">Poppy playtime APK chapter 3</button></a>
+        <!-- Kayma alanları için 3 farklı container -->
+        <div id="slide1" class="slide-container">
+            <div class="slide-text">Çekiliiş için zorunlu olan görevler</div>
+            <a href="https://www.youtube.com/@ydteamolart">   <button class="slide-btn">Youtube kanalıma bak</button>   </a>                                 <a href=""></a>
+        </div>
+        <div id="slide2" class="slide-container">
+            <div class="slide-text">Huge satın almak için discordumuz</div>
+            <a href="">       <button class="slide-btn">Huge satın almak için tıkla (yakında)</button></a>
+        </div>
+        <div id="slide3" class="slide-container">
+            <div class="slide-text">Petlerinizi satmak için discordumuz</div>
+            <a href="">  <button class="slide-btn">Petlerinizi satmak için tıkla (yakında)</button></a>
         </div>
     </div>
 
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const buttonsContainer = document.getElementById("buttonsContainer");
+
+        // Butonlar ve kayma alanları
+        const slide1 = document.getElementById("slide1");
+        const slide2 = document.getElementById("slide2");
+        const slide3 = document.getElementById("slide3");
+
+        // Butonlara tıklandığında kayma alanlarını göster
+        document.getElementById("btn1").addEventListener("click", () => {
+            slide1.style.display = "block";
+        });
+        document.getElementById("btn2").addEventListener("click", () => {
+            slide2.style.display = "block";
+        });
+        document.getElementById("btn3").addEventListener("click", () => {
+            slide3.style.display = "block";
+        });
+
+        // Başla butonuna tıklandığında diğer butonları göster
+        startBtn.addEventListener("click", function() {
+            buttonsContainer.style.display = "block";
+        });
+    </script>
 </body>
 </html>
