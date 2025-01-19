@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reyn Dev Team</title>
+    <title>DEVİLZ TAKİPÇİ BOTU</title>
     <style>
         * {
             margin: 0;
@@ -13,302 +13,267 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #FF6347, #FFD700); /* Yumuşak renk geçişi */
-            color: #fff;
+            background: radial-gradient(circle, #ff0044, #00bcd4);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
+            margin: 0;
+            color: #fff;
             flex-direction: column;
-            text-align: center;
-            animation: backgroundAnimation 8s infinite alternate;
-        }
-
-        @keyframes backgroundAnimation {
-            0% {
-                background: linear-gradient(45deg, #FF6347, #FFD700); /* Turuncu ve sarı */
-            }
-            50% {
-                background: linear-gradient(45deg, #1E90FF, #32CD32); /* Mavi ve yeşil */
-            }
-            100% {
-                background: linear-gradient(45deg, #8A2BE2, #FF4500); /* Mor ve kırmızı */
-            }
+            overflow: hidden;
+            animation: backgroundAnimation 5s infinite alternate;
         }
 
         h1 {
-            font-size: 60px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 40px;
+            font-size: 4rem;
             color: #fff;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
-            animation: textPop 1s ease-out forwards, textGlow 2s infinite alternate;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 4px;
+            text-shadow: 5px 5px 15px rgba(255, 0, 68, 0.5), 0 0 25px rgba(255, 0, 68, 0.8);
+            animation: textGlitch 2s infinite alternate;
         }
 
-        @keyframes textPop {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: formBounce 1.5s ease-out;
         }
 
-        @keyframes textGlow {
-            0% {
-                text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.6);
-            }
-            100% {
-                text-shadow: 0 0 60px rgba(255, 215, 0, 0.9), 0 0 80px rgba(255, 215, 0, 0.8);
-            }
+        .form-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
+            opacity: 0.7;
+            z-index: -1;
+            animation: pulseGlow 2s infinite;
         }
 
-        .start-btn {
-            padding: 20px 60px;
-            font-size: 24px;
-            background: #FF4500;
-            border: none;
-            border-radius: 50px;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.4s ease-in-out;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            margin-top: 30px;
-            animation: btnPop 1s ease-out forwards;
-        }
-
-        @keyframes btnPop {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .start-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
-            background: #FF6347;
-        }
-
-        .buttons-container {
-            display: none;
-            margin-top: 50px;
-        }
-
-        .dynamic-btn {
-            background: transparent;
-            border: 2px solid #FFD700;
-            padding: 18px 40px;
-            font-size: 22px;
-            color: #FFD700;
-            border-radius: 50px;
-            margin: 15px;
-            cursor: pointer;
-            transition: all 0.5s ease-in-out;
-            opacity: 0;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .dynamic-btn:hover {
-            background: #FFD700;
-            color: #000;
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
-        }
-
-        .dynamic-btn:nth-child(1) {
-            animation: slideIn 0.6s ease-out forwards;
-        }
-
-        .dynamic-btn:nth-child(2) {
-            animation: slideIn 0.8s ease-out forwards;
-        }
-
-        .dynamic-btn:nth-child(3) {
-            animation: slideIn 1s ease-out forwards;
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .slide-container {
-            display: none;
-            margin-top: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            animation: slideDown 0.6s ease-out forwards;
-        }
-
-        @keyframes slideDown {
-            0% {
-                transform: translateY(-40px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .slide-text {
-            font-size: 22px;
+        label {
+            display: block;
             margin-bottom: 20px;
-            color: #333;
-            line-height: 1.6;
-            font-family: 'Arial', sans-serif;
+            font-size: 1.2rem;
+            color: #eee;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
         }
 
-        .slide-btn {
-            padding: 15px 35px;
-            font-size: 18px;
-            background: #FF6347;
+        input {
+            width: 100%;
+            padding: 20px;
+            margin: 18px 0;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            background: #222;
             color: #fff;
+            font-size: 1.2rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            opacity: 0;
+            animation: inputAnimation 1s forwards;
+        }
+
+        input:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        input:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        input:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+
+        input:focus {
+            border-color: #ff0044;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 68, 0.8);
+        }
+
+        button {
+            background-color: #ff0044;
+            color: white;
+            padding: 20px 30px;
             border: none;
-            border-radius: 50px;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            width: 100%;
             cursor: pointer;
-            transition: transform 0.5s ease-in-out;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            animation: buttonAnimation 1s forwards;
+            animation-delay: 2s;
         }
 
-        .slide-btn:hover {
-            transform: translateY(-4px);
-            background: #FF4500;
-            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+        button:hover {
+            background-color: #ff77ff;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 0, 68, 0.8);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        #message {
+            color: #ff77ff;
+            font-weight: bold;
+            margin-top: 30px;
+            font-size: 1.4rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+            animation-delay: 2.5s;
+        }
+
+        /* Animasyonlar */
+        @keyframes backgroundAnimation {
+            0% {
+                background: radial-gradient(circle, #ff0044, #00bcd4);
+            }
+            100% {
+                background: radial-gradient(circle, #00bcd4, #ff0044);
+            }
+        }
+
+        @keyframes textGlitch {
+            0% {
+                text-shadow: 5px 5px 15px rgba(255, 0, 68, 0.5), 0 0 25px rgba(255, 0, 68, 0.8);
+            }
+            50% {
+                text-shadow: -5px -5px 15px rgba(0, 255, 255, 0.6), 0 0 25px rgba(0, 255, 255, 0.8);
+            }
+            100% {
+                text-shadow: 5px 5px 15px rgba(255, 0, 68, 0.5), 0 0 25px rgba(255, 0, 68, 0.8);
+            }
+        }
+
+        @keyframes formBounce {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes inputAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes buttonAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 600px) {
             h1 {
-                font-size: 48px;
-                margin-bottom: 30px;
+                font-size: 2.5rem;
             }
 
-            .start-btn {
-                padding: 15px 40px;
-                font-size: 18px;
-            }
-
-            .dynamic-btn {
-                padding: 14px 30px;
-                font-size: 20px;
-            }
-
-            .slide-container {
-                margin-top: 20px;
+            .form-container {
                 padding: 30px;
             }
 
-            .slide-text {
-                font-size: 18px;
+            input {
+                padding: 12px;
+                font-size: 1rem;
             }
 
-            .slide-btn {
-                padding: 12px 28px;
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 36px;
-                margin-bottom: 20px;
-            }
-
-            .start-btn {
-                padding: 12px 30px;
-                font-size: 16px;
-            }
-
-            .dynamic-btn {
-                padding: 12px 25px;
-                font-size: 18px;
-            }
-
-            .slide-container {
-                margin-top: 15px;
-                padding: 25px;
-            }
-
-            .slide-text {
-                font-size: 16px;
-            }
-
-            .slide-btn {
-                padding: 10px 24px;
-                font-size: 14px;
+            button {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>REYN DEV</h1>
-        <button class="start-btn" id="startBtn">Başla</button>
-
-        <div class="buttons-container" id="buttonsContainer">
-            <button class="dynamic-btn" id="btn1">Çekilişten Yararlan</button>
-            <button class="dynamic-btn" id="btn2">Huge Satın al</button>
-            <button class="dynamic-btn" id="btn3">Pet sat</button>
-        </div>
-
-        <!-- Kayma alanları için 3 farklı container -->
-        <div id="slide1" class="slide-container">
-            <div class="slide-text">Çekiliiş için zorunlu olan görevler</div>
-            <a href="https://www.youtube.com/@ydteamolart">   <button class="slide-btn">Youtube kanalıma bak</button>   </a>                                 <a href=""></a>
-        </div>
-        <div id="slide2" class="slide-container">
-            <div class="slide-text">Huge satın almak için discordumuz</div>
-            <a href="">       <button class="slide-btn">Huge satın almak için tıkla (yakında)</button></a>
-        </div>
-        <div id="slide3" class="slide-container">
-            <div class="slide-text">Petlerinizi satmak için discordumuz</div>
-            <a href="">  <button class="slide-btn">Petlerinizi satmak için tıkla (yakında)</button></a>
+    <h1>Instagram TAKİPÇİ BOTU</h1>
+    <div class="form-container">
+        <form id="followersForm">
+            <label for="username">Kullanıcı Adı:</label>
+            <input type="text" id="username" name="username" placeholder="Kullanıcı adınızı girin" required>
+            
+            <label for="followers">Takipçi Sayısı:</label>
+            <input type="number" id="followers" name="followers" placeholder="Takipçi sayınızı girin" required>
+            
+            <button type="submit">Takipçi Arttır</button>
+        </form>
+        <div id="message" class="hidden">
+            <p>Takipçiler 20 ile 30 dakika arasında ulaşır (hiçbiri bot değildir hepsi gerçek kullanıcılardır)</p>
         </div>
     </div>
 
     <script>
-        const startBtn = document.getElementById("startBtn");
-        const buttonsContainer = document.getElementById("buttonsContainer");
+        document.getElementById('followersForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Formun gerçek submit edilmesini engelle
 
-        // Butonlar ve kayma alanları
-        const slide1 = document.getElementById("slide1");
-        const slide2 = document.getElementById("slide2");
-        const slide3 = document.getElementById("slide3");
+            // Kullanıcı adı ve takipçi sayısı verisini al
+            const username = document.getElementById('username').value;
+            const followers = document.getElementById('followers').value;
 
-        // Butonlara tıklandığında kayma alanlarını göster
-        document.getElementById("btn1").addEventListener("click", () => {
-            slide1.style.display = "block";
-        });
-        document.getElementById("btn2").addEventListener("click", () => {
-            slide2.style.display = "block";
-        });
-        document.getElementById("btn3").addEventListener("click", () => {
-            slide3.style.display = "block";
-        });
-
-        // Başla butonuna tıklandığında diğer butonları göster
-        startBtn.addEventListener("click", function() {
-            buttonsContainer.style.display = "block";
+            // Burada sadece sahte bir işlem yapıyoruz
+            if (username && followers) {
+                // Mesajı göster
+                document.getElementById('message').classList.remove('hidden');
+                document.getElementById('followersForm').reset(); // Formu sıfırla
+            } else {
+                alert('Doldur!!!!!');
+            }
         });
     </script>
 </body>
